@@ -31,6 +31,7 @@ const AddPlayerForm = () => {
 
   const addPlayer = useStore((state: IStoreState) => state.addPlayers);
   const setGameMode = useStore((state: IStoreState) => state.setGameMode);
+  const setInProgress = useStore((state: IStoreState) => state.setInProgress);
   const onSubmit = (data: IAddPlayerForm) => {
     console.log(data);
     const player: IPlayer = { ...data, score: 0 };
@@ -42,6 +43,7 @@ const AddPlayerForm = () => {
     addPlayer(player);
     addPlayer(cpuPlayer);
     setGameMode('single');
+    setInProgress(true);
     reset();
   };
   const theme = useTheme();

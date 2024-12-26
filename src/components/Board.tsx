@@ -28,12 +28,17 @@ const Board: React.FC = () => {
     if (!inProgress) return;
     console.log(cellData);
     const { row, column } = cellData;
+    if (!validMove(row, column)) return;
     setMatrix(row, column, getPlayerIdentifier());
     setCurrentTurn();
   };
   const handleEndOfRound = (identifier: TMatrixValues) => {
     const winningPositions = getWinningPositions(matrix, identifier);
     setWinningPositions(winningPositions);
+  };
+  const validMove = (row: number, column: number) => {
+    if (matrix[row][column] !== '') return false;
+    return true;
   };
   const cpuAction = async (updatedMatrix: TMatrix) => {
     await pauseExecution(1000);

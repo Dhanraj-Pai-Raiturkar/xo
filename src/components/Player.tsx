@@ -15,7 +15,7 @@ const Player: React.FC<TPlayerProps> = ({ name, score, identifier }) => {
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
-      p={8}
+      p={{ xs: 2, sm: 2, md: 2, lg: 8, xl: 8 }}
     >
       <Box>
         <Typography variant="h5">

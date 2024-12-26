@@ -10,7 +10,7 @@ export const gameSlice: (set: any, get: any) => IGameSlice = (set) => ({
   currentTurn: true,
   matrix: createMatrix(3, 3),
   winningPositions: null,
-  inProgress: true,
+  inProgress: false,
   setInProgress: (status: boolean) => {
     set((state: IStoreState) => ({ ...state, inProgress: status }));
   },

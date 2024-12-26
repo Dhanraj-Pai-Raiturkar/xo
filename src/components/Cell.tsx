@@ -1,4 +1,4 @@
-import { Box, Paper, Typography, useTheme } from '@mui/material';
+import { Box, keyframes, Paper, Typography, useTheme } from '@mui/material';
 import { IStoreState, TMatrixValues } from '../interface';
 import useStore from '../store';
 
@@ -19,15 +19,24 @@ const Cell: React.FC<TCellProps> = ({
 }) => {
   const cellSizeConfig = {
     xs: '100px',
-    sm: '100px',
+    sm: '200px',
     md: '200px',
     lg: '200px',
-    xl: '350px',
+    xl: '200px',
   };
   const theme = useTheme();
   const getPlayerIdentifier = useStore(
     (state: IStoreState) => state.getPlayerIdentifier
   );
+  const spinOnce = keyframes`
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+`;
+  const inProgress = useStore((state: IStoreState) => state.inProgress);
   const getBoxShadow = () => {
     if (winCell) {
       return `0px 4px 10px ${
@@ -54,6 +63,10 @@ const Cell: React.FC<TCellProps> = ({
           justifyContent: 'center',
           alignItems: 'center',
           boxShadow: winCell ? getBoxShadow() : 'default',
+          transition: 'box-shadow 0.5s ease-in-out',
+          animation: inProgress
+            ? `${spinOnce} 3s cubic-bezier(0.25, 0.1, 0.25, 1) 1`
+            : 'none',
         }}
         elevation={5}
       >
