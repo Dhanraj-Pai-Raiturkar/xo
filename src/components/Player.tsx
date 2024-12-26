@@ -1,5 +1,6 @@
-import { Box, Grid2, Typography, useTheme } from '@mui/material';
-import { TMatrixValues } from '../interface';
+import { Box, Grid2, keyframes, Typography, useTheme } from '@mui/material';
+import { IStoreState, TMatrixValues } from '../interface';
+import useStore from '../store';
 
 export type TPlayerProps = {
   name: string;
@@ -7,7 +8,19 @@ export type TPlayerProps = {
   identifier: TMatrixValues;
 };
 
+const zoomInOut = keyframes`
+0% {
+  transform: scale(1);
+}
+50% {
+  transform: scale(2); /* Zoom in */
+}
+100% {
+  transform: scale(1); /* Back to original size */
+}
+`;
 const Player: React.FC<TPlayerProps> = ({ name, score, identifier }) => {
+  const inProgress = useStore((state: IStoreState) => state.inProgress);
   const theme = useTheme();
   return (
     <Grid2
@@ -15,12 +28,18 @@ const Player: React.FC<TPlayerProps> = ({ name, score, identifier }) => {
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
-      p={{ xs: 2, sm: 2, md: 2, lg: 8, xl: 8 }}
+      p={{ xs: 1, sm: 1, md: 2, lg: 8, xl: 8 }}
     >
       <Box>
         <Typography variant="h5">
           {name.toUpperCase() + ': '}
-          <Typography display="inline-block" variant="h5">
+          <Typography
+            sx={{
+              animation: inProgress ? `${zoomInOut} 1s ease-in-out` : 'none',
+            }}
+            display="inline-block"
+            variant="h5"
+          >
             {score}
           </Typography>
         </Typography>

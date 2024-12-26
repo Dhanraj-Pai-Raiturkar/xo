@@ -65,7 +65,7 @@ const Cell: React.FC<TCellProps> = ({
           boxShadow: winCell ? getBoxShadow() : 'default',
           transition: 'box-shadow 0.5s ease-in-out',
           animation: inProgress
-            ? `${spinOnce} 3s cubic-bezier(0.25, 0.1, 0.25, 1) 1`
+            ? `${spinOnce} 1.2s cubic-bezier(0.25, 0.1, 0.25, 1) 1`
             : 'none',
         }}
         elevation={5}

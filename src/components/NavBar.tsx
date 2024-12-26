@@ -9,6 +9,7 @@ import {
 } from '@mui/material';
 import useStore from '../store';
 import { IStoreState } from '../interface';
+import { pauseExecution } from '../Utils';
 
 const Navbar = () => {
   const ToolbarStyled = styled(Toolbar)(() => ({
@@ -19,9 +20,13 @@ const Navbar = () => {
   const theme = useTheme();
   const resetScores = useStore((state: IStoreState) => state.resetScores);
   const resetMatrix = useStore((state: IStoreState) => state.resetMatrix);
-  const handleReset = () => {
+  const setInProgress = useStore((state: IStoreState) => state.setInProgress);
+  const handleReset = async () => {
     resetMatrix();
     resetScores();
+    setInProgress(false);
+    await pauseExecution(1000);
+    setInProgress(true);
   };
   return (
     <AppBar position="static" sx={{ zIndex: theme.zIndex.appBar }}>

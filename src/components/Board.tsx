@@ -58,8 +58,9 @@ const Board: React.FC = () => {
     if (winner) {
       updateScore(winner as TMatrixValues);
       handleEndOfRound(winner as TMatrixValues);
+      setInProgress(false);
       timeout = setTimeout(() => {
-        setInProgress(false);
+        setInProgress(true);
         resetMatrix();
       }, 2000);
       return () => {
