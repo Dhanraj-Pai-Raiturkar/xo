@@ -25,9 +25,6 @@ const Cell: React.FC<TCellProps> = ({
     xl: '350px',
   };
   const theme = useTheme();
-  const getCpuIdentifier = useStore(
-    (state: IStoreState) => state.getCpuIdentifier
-  );
   const getPlayerIdentifier = useStore(
     (state: IStoreState) => state.getPlayerIdentifier
   );

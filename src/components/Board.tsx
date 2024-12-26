@@ -5,7 +5,6 @@ import useStore from '../store';
 import {
   checkWinner,
   cpuPlayAction,
-  createMatrix,
   getEmptyCells,
   getWinningPositions,
   pauseExecution,
