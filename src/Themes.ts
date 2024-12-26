@@ -12,6 +12,7 @@ declare module '@mui/material/styles' {
       primary: PaletteTypes;
       secondary: PaletteTypes;
       warning: PaletteTypes;
+      info: PaletteTypes;
     };
     mixins: {
       toolbar: {
@@ -25,6 +26,7 @@ declare module '@mui/material/styles' {
       primary: PaletteTypes;
       secondary: PaletteTypes;
       warning: PaletteTypes;
+      info: PaletteTypes;
     };
     mixins: {
       toolbar: {
@@ -50,6 +52,11 @@ export const LightTheme = createTheme({
       main: '#947979',
       light: '#bb9a9a',
       dark: '#846767',
+    },
+    info: {
+      main: '#fff',
+      light: '#fff',
+      dark: '#605d5d',
     },
   },
   mixins: {

@@ -28,17 +28,18 @@ const Player: React.FC<TPlayerProps> = ({ name, score, identifier }) => {
       alignItems="center"
       justifyContent="center"
       flexDirection="column"
-      p={{ xs: 1, sm: 1, md: 2, lg: 8, xl: 8 }}
+      p={{ xs: 0, sm: 0, md: 2, lg: 8, xl: 8 }}
     >
       <Box>
-        <Typography variant="h5">
+        <Typography variant="subtitle1" color={theme.palette.info.dark}>
           {name.toUpperCase() + ': '}
           <Typography
             sx={{
               animation: inProgress ? `${zoomInOut} 1s ease-in-out` : 'none',
             }}
             display="inline-block"
-            variant="h5"
+            variant="h4"
+            color={theme.palette.info.dark}
           >
             {score}
           </Typography>
